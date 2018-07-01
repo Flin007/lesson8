@@ -6,10 +6,14 @@ function handleTableClick(event) {
 
     let thList = document.querySelectorAll('th');
 
-    Array.from(thList).forEach(item => { if (item !== th) {item.removeAttribute(`data-dir`);}});
+    Array.from(thList).forEach(item => {
+        if (item !== th) {
+            item.removeAttribute(`data-dir`);
+        }else {
+            item.dataset.dir = th.dataset.dir ? -th.dataset.dir : 1;
+            sortTable(item.dataset.propName, item.dataset.dir);
+            table.dataset.sortBy = th.dataset.propName;
+        }
+    });
 
-    th.dataset.dir = th.dataset.dir ? -th.dataset.dir : 1;
-    sortTable(th.dataset.propName, th.dataset.dir);
-
-    table.dataset.sortBy = th.dataset.propName;
 }

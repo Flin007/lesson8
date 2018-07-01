@@ -2,7 +2,7 @@
 
 list.addEventListener('click', event => {
     event.preventDefault();
-    if (event.target.classList.contains('add-to-cart') === false) {
+    if (!event.target.classList.contains('add-to-cart')) {
         return;
     }
 
